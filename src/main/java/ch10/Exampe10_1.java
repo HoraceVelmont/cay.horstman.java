@@ -1,0 +1,22 @@
+package ch10;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+
+public class Exampe10_1 {
+	public static void main(String[] args) {
+		Runnable hellos = () -> {
+			for( int i=1; i<=1000; i++)
+				System.out.println("Hello " + i);
+		};
+
+		Runnable goodbyes = () -> {
+			for (int i=1; i<=1000 ; i++)
+				System.out.println("Goodbye " + i);
+		};	
+		
+		Executor executor = Executors.newCachedThreadPool();
+		executor.execute(hellos);
+		executor.execute(goodbyes);
+	}
+}
